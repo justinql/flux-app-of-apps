@@ -23,6 +23,10 @@ spec:
             volumesPerServer: 1
             storageClassName: longhorn
             size: 1Gi
+        buckets:
+          - name: my-minio-bucket
+            objectLock: false        # optional
+            region: us-east-1        # optional
       ingress:
         api:
           enabled: true

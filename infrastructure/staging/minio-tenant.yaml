@@ -5,7 +5,6 @@ metadata:
   name: tenant
   namespace: minio
 spec:
-  chart:
     values:
       ingress:
         api:

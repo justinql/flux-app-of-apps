@@ -1,0 +1,30 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: operator
+  namespace: minio
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: operator
+      version: "*"
+      sourceRef:
+        kind: HelmRepository
+        name: minio-operator
+        namespace: minio
+      interval: 12h
+      values:
+        pools:
+         - servers: 1
+           volumesPerServer: 1
+           storageClassName: longhorn
+           size: 1g
+        ingress:
+          api:
+            enable: true
+            ingressClassName: nginx
+          console:
+            enable: true
+            ingressClassName: nginx

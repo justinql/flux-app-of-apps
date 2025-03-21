@@ -23,8 +23,8 @@ spec:
          size: 1g
       ingress:
         api:
-          enable: true
+          enabled: true
           ingressClassName: nginx
         console:
-          enable: true
+          enabled: true
           ingressClassName: nginx

@@ -10,3 +10,4 @@ patches:
   - path: minio-tenant.yaml
     target:
       kind: HelmRelease
+      name: tenant

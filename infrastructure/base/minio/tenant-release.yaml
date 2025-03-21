@@ -16,11 +16,12 @@ spec:
         namespace: minio
       interval: 12h
   values:
-      pools:
-       - servers: 1
-         volumesPerServer: 1
-         storageClassName: longhorn
-         size: 1g
+      tenant:
+        pools:
+          - servers: 1
+            volumesPerServer: 1
+            storageClassName: longhorn
+            size: 1g
       ingress:
         api:
           enabled: true

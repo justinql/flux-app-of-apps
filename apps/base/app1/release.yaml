@@ -16,14 +16,6 @@ spec:
     remediation:
       retries: 3
   values:
-    backstage:
-      extraEnvVars:
-        - name: 'APP_CONFIG_app_baseUrl'
-          value: 'http://{{ .Values.ingress.host }}'
-        - name: 'APP_CONFIG_backend_baseUrl'
-          value: 'http://{{ .Values.ingress.host }}'
-        - name: 'APP_CONFIG_backend_cors_origin'
-          value: 'http://{{ .Values.ingress.host }}'
     ingress:
       enabled: true
       className: nginx

@@ -8,5 +8,10 @@ spec:
     spec:
       version: ">=2.4.0"
   values:
+    backstage:
+      extraEnvVars:
+        - name: 'APP_CONFIG_app_baseUrl'
+          value: 'http://backstage-stg.justinql.ca'
+
     ingress:
       host: backstage-stg.justinql.ca

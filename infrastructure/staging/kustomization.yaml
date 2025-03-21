@@ -9,8 +9,3 @@ patches:
       kind: HelmRelease
       name: ingress-nginx
       namespace: ingress-nginx2
-  - path: ingress-nginx.yaml
-    target:
-      kind: HelmRelease
-      name: tenant
-      namespace: minio

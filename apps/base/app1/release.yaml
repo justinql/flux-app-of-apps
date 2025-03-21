@@ -1,0 +1,29 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: app1
+  namespace: app1
+spec:
+  releaseName: app1
+  chart:
+    spec:
+      chart: backstage
+      sourceRef:
+        kind: HelmRepository
+        name: backstage
+  interval: 50m
+  install:
+    remediation:
+      retries: 3
+  values:
+    backstage:
+      extraEnvVars:
+        - name: 'APP_CONFIG_app_baseUrl'
+          value: 'http://{{ .Values.ingress.host }}'
+        - name: 'APP_CONFIG_backend_baseUrl'
+          value: 'http://{{ .Values.ingress.host }}'
+        - name: 'APP_CONFIG_backend_cors_origin'
+          value: 'http://{{ .Values.ingress.host }}'
+    ingress:
+      enabled: true
+      className: nginx

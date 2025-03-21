@@ -5,9 +5,9 @@ metadata:
   name: tenant
   namespace: minio
 spec:
-    values:
-      ingress:
-        api:
-          host: minio-stg.justinql.ca
-         console:
-          host: minio-console-stg.justinql.ca
+  values:
+    ingress:
+      api:
+        host: minio-stg.justinql.ca
+      console:
+        host: minio-console-stg.justinql.ca

@@ -15,7 +15,7 @@ spec:
         name: minio-operator
         namespace: minio
       interval: 12h
-    values:
+  values:
       pools:
        - servers: 1
          volumesPerServer: 1

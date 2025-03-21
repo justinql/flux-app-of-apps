@@ -12,5 +12,5 @@ patches:
   - path: ingress-nginx.yaml
     target:
       kind: HelmRelease
-      namespace: minio
       name: tenant
+      namespace: minio

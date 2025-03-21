@@ -6,6 +6,3 @@ patches:
   - path: app1-values.yaml
     target:
       kind: HelmRelease
-  - path: namespace.yaml
-    target:
-      kind: Namespace

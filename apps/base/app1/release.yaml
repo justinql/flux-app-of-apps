@@ -10,7 +10,7 @@ spec:
       chart: backstage
       sourceRef:
         kind: HelmRepository
-        name: backstage
+        name: app1
   interval: 50m
   install:
     remediation:

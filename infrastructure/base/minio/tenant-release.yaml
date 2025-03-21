@@ -19,6 +19,7 @@ spec:
       tenant:
         pools:
           - servers: 1
+            name: pool-0
             volumesPerServer: 1
             storageClassName: longhorn
             size: 1Gi

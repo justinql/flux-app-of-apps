@@ -21,7 +21,7 @@ spec:
           - servers: 1
             volumesPerServer: 1
             storageClassName: longhorn
-            size: 1g
+            size: 1Gi
       ingress:
         api:
           enabled: true

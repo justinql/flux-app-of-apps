@@ -29,7 +29,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: ingress-nginx
-        namespace: ingress-nginx
+        namespace: ingress-nginx2
       interval: 12h
   values:
     controller:

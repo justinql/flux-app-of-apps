@@ -7,3 +7,6 @@ patches:
   - path: tenant-release.yaml
     target:
       kind: HelmRelease
+  - path: ingress-nginx.yaml
+    target:
+      kind: HelmRelease

@@ -15,16 +15,16 @@ spec:
         name: minio-operator
         namespace: minio
       interval: 12h
-      values:
-        pools:
-         - servers: 1
-           volumesPerServer: 1
-           storageClassName: longhorn
-           size: 1g
-        ingress:
-          api:
-            enable: true
-            ingressClassName: nginx
-          console:
-            enable: true
-            ingressClassName: nginx
+    values:
+      pools:
+       - servers: 1
+         volumesPerServer: 1
+         storageClassName: longhorn
+         size: 1g
+      ingress:
+        api:
+          enable: true
+          ingressClassName: nginx
+        console:
+          enable: true
+          ingressClassName: nginx

@@ -5,4 +5,9 @@ resources:
   - ../base/minio
 patches:
   - path: ingress-nginx.yaml
+    target:
+      kind: HelmRelease
   - path: minio-tenant.yaml
+    target:
+      kind: HelmRelease
+      name: tenant

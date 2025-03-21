@@ -4,8 +4,6 @@ resources:
   - ../base/ingress-nginx
   - ../base/minio
 patches:
-  - path: minio-tenant.yaml
+  - path: tenant-release.yaml
     target:
       kind: HelmRelease
-      name: tenant
-      namespace: minio

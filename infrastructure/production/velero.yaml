@@ -21,6 +21,9 @@ spec:
         - name: minio-off-cluster
           provider: aws
           bucket: my-minio-bucket
+          credential:
+            name: velero
+            key: minio-off-cluster
           config:
             region: us-east-1
             s3ForcePathStyle: true
@@ -30,6 +33,10 @@ spec:
     credentials:
       secretContents:
         cloud: |
+          [default]
+          aws_access_key_id=0zkIuiLtY8QSl4Fzv0vo
+          aws_secret_access_key=HM5MiZ5WA0pucIhomNUSA3SaSCPzQmB6E7xV8BV7
+        minio-off-cluster: |
           [default]
           aws_access_key_id=0zkIuiLtY8QSl4Fzv0vo
           aws_secret_access_key=HM5MiZ5WA0pucIhomNUSA3SaSCPzQmB6E7xV8BV7

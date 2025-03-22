@@ -1,0 +1,63 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: velero
+  namespace: velero
+spec:
+  values:
+    configuration:
+      backupStorageLocation:
+        - name: minio
+          provider: aws
+          bucket: my-minio-bucket
+          default: true
+          config:
+            region: us-east-1
+            s3ForcePathStyle: true
+            s3Url: https://minio.minio.svc:443
+            publicUrl: https://minio.justinql.ca
+            insecureSkipTLSVerify: true
+        - name: minio-off-cluster
+          provider: aws
+          bucket: my-minio-bucket
+          config:
+            region: us-east-1
+            s3ForcePathStyle: true
+            s3Url: https://minio-offcluster.justinql.ca
+            insecureSkipTLSVerify: true
+
+    credentials:
+      secretContents:
+        cloud: |
+          [default]
+          aws_access_key_id=0zkIuiLtY8QSl4Fzv0vo
+          aws_secret_access_key=HM5MiZ5WA0pucIhomNUSA3SaSCPzQmB6E7xV8BV7
+    schedules:
+      daily-full:
+        schedule: 35 1 * * *
+        skipImmediately: false
+        template:
+          csiSnapshotTimeout: 0s
+          excludedNamespaces:
+          - minio
+          - kube-system
+          includedNamespaces:
+           - '*'
+          itemOperationTimeout: 0s
+          ttl: 0s
+        useOwnerReferencesInBackup: false
+      daily-full-off-cluster:
+        schedule: 35 2 * * *
+        skipImmediately: false
+        template:
+          csiSnapshotTimeout: 0s
+          excludedNamespaces:
+          - minio
+          - kube-system
+          includedNamespaces:
+           - '*'
+          itemOperationTimeout: 0s
+          ttl: 0s
+          storageLocation: minio-off-cluster
+        useOwnerReferencesInBackup: false

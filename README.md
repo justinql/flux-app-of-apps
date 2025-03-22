@@ -24,6 +24,21 @@ flux bootstrap git \
 
 ## Usefule
 
+https://fluxcd.io/flux/guides/repository-structure/
+```
+├── apps
+│   ├── base
+│   ├── production 
+│   └── staging
+├── infrastructure
+│   ├── base
+│   ├── production 
+│   └── staging
+└── clusters
+    ├── production
+    └── staging
+```
+https://github.com/fluxcd/flux2-kustomize-helm-example
 
 ### See if it synced or errors: 
 
@@ -42,6 +57,7 @@ flux -n minio get helmreleases
 
 RBAC assuming no outside access to git. If there is, use multi-tenant model (main git repo referes to external git repos for apps, add extra rules to prevent one app from managing another)
 https://fluxcd.io/flux/installation/configuration/multitenancy/
+https://github.com/fluxcd/flux2-multi-tenancy
 
 ## Managing Secrets
 https://fluxcd.io/flux/guides/mozilla-sops/

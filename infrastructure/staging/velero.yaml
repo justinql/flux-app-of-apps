@@ -18,8 +18,8 @@ spec:
             publicUrl: https://minio-stg.justinql.ca:30138
             insecureSkipTLSVerify: true
     credentials:
-      secretContents: |
-        cloud:
+      secretContents:
+        cloud: |
           [default]
           aws_access_key_id=0zkIuiLtY8QSl4Fzv0vo
           aws_secret_access_key=HM5MiZ5WA0pucIhomNUSA3SaSCPzQmB6E7xV8BV7

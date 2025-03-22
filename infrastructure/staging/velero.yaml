@@ -24,3 +24,17 @@ spec:
           [default]
           aws_access_key_id=0zkIuiLtY8QSl4Fzv0vo
           aws_secret_access_key=HM5MiZ5WA0pucIhomNUSA3SaSCPzQmB6E7xV8BV7
+    schedules:
+      daily-full:
+        schedule: 35 1 * * *
+        skipImmediately: false
+        template:
+          csiSnapshotTimeout: 0s
+          excludedNamespaces:
+          - minio
+          - kube-system
+          includedNamespaces:
+           - '*'
+          itemOperationTimeout: 0s
+          ttl: 0s
+        useOwnerReferencesInBackup: false

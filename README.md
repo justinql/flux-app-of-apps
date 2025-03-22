@@ -3,8 +3,11 @@
 curl -s https://fluxcd.io/install.sh | sudo bash
 
 ## Bootrap Cluster
+```bash
 export GITHUB_TOKEN=
+```
 
+```bash
 flux bootstrap github \
   --token-auth \
   --owner=justinql \
@@ -12,8 +15,10 @@ flux bootstrap github \
   --branch=main \
   --path=clusters/home \
   --personal
+```
 
 ### Air-Gap
+```
 flux bootstrap git \
   --registry=registry.internal/fluxcd \
   --url=ssh://git@<host>/<org>/<repository> \
@@ -21,6 +26,7 @@ flux bootstrap git \
   --private-key-file=<path/to/private.key> \
   --password=<key-passphrase> \
   --path=clusters/my-cluster
+```
 
 ## Usefule
 

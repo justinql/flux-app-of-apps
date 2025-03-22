@@ -11,6 +11,7 @@ spec:
         - name: minio
           provider: aws
           bucket: my-minio-bucket
+          default: true
           config:
             region: us-east-1
             s3ForcePathStyle: true

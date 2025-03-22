@@ -6,3 +6,4 @@ resources:
   - repository.yaml
   - tenant-release.yaml
   - operator-release.yaml
+  - operator-ns-binding.yaml

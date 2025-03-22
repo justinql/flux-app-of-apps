@@ -4,6 +4,7 @@ resources:
   - ../base/ingress-nginx
   - ../base/minio
   - ../base/velero
+  - ../base/rbac
 patches:
   - path: minio-tenant.yaml
     target:

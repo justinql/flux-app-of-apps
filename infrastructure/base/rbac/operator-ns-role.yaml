@@ -1,0 +1,30 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: operator-ns-role
+rules:
+- apiGroups: [""]
+  resources: ["configmaps","endpoints","events","persistentvolumeclaims","pods","pods/log","resourcequotas","services"]
+  verbs: ["get","list","watch","create","patch","update","delete","deletecollection"]
+# Optional, exec into a pod could be a security issue but is extreamly helpful for operators when troubleshooting
+#- apiGroups: [""]
+#  resources: ["pods/exec"]
+#  verbs: ["create"]
+- apiGroups: ["apps"]
+  resources: ["deployments","replicasets","statefulsets"]
+  verbs: ["get","list","watch","create","patch","delete","deletecollection"]
+- apiGroups: ["batch"]
+  resources: ["cronjobs","jobs"]
+  verbs: ["get","list","watch","create","patch","delete","deletecollection"]
+- apiGroups: ["events.k8s.io"]
+  resources: ["events"]
+  verbs: ["get","list","watch"]
+- apiGroups: ["networking.k8s.io"]
+  resources: ["ingresses"]
+  verbs: ["get","list","watch","create","patch","delete","deletecollection"]
+- apiGroups: [""]
+  resources: ["configmaps","secrets"]
+  verbs: ["get","list","watch","create","patch","update","delete","deletecollection"]
+- apiGroups: ["rbac.authorization.k8s.io"]
+  resources: ["rolebindings", "roles"]
+  verbs: ["get", "list", "watch"]

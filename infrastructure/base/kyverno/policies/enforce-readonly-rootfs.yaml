@@ -1,0 +1,33 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: enforce-readonly-rootfs
+  annotations:
+    policies.kyverno.io/title: Ensure Read Only hostPath
+    policies.kyverno.io/category: Pod Security
+    policies.kyverno.io/severity: medium
+    policies.kyverno.io/subject: Pod
+    policies.kyverno.io/description: >-
+      Pods which are allowed to mount hostPath volumes in read/write mode pose a security risk
+      even if confined to a "safe" file system on the host and may escape those confines (see
+      https://blog.aquasec.com/kubernetes-security-pod-escape-log-mounts). The only true way
+      to ensure safety is to enforce that all Pods mounting hostPath volumes do so in read only
+      mode. This policy checks all containers for any hostPath volumes and ensures they are
+      explicitly mounted in readOnly mode.  
+spec:
+  validationFailureAction: Enforce
+  rules:
+    - name: check-readonly-rootfs
+      match:
+        resources:
+          kinds:
+            - Pod
+      validate:
+        message: "Containers must use a read-only root filesystem."
+        pattern:
+          spec:
+            containers:
+              - securityContext:
+                  readOnlyRootFilesystem: true
+
+  #Reference https://kyverno.io/policies/other/ensure-readonly-hostpath/ensure-readonly-hostpath/

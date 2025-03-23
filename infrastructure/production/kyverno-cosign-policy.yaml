@@ -1,0 +1,23 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-signed-images
+spec:
+  rules:
+    - name: verify-image-signature
+      match:
+        resources:
+          kinds:
+            - Pod
+      verifyImages:
+      - imageReferences:
+        - "harbor.example.com/*"
+        mutateDigest: true
+        attestors:
+        - entries:
+          - keys:
+              publicKeys: |
+                -----BEGIN PUBLIC KEY-----
+                MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEOFkfgpc1DV4L5uOekkuI7mRtjXrL
+                cKzKoWyvawzeGts95jY5nYpivdMjg2+fWRiW0uZqTa1lZtsoAb5JrRykJg==
+                -----END PUBLIC KEY-----

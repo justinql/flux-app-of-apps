@@ -7,6 +7,7 @@ resources:
   - ../base/rbac
   - ../base/hitachi
   - ../base/kyverno
+  - ../base/keycloak
 patches:
   - path: minio-tenant.yaml
     target:

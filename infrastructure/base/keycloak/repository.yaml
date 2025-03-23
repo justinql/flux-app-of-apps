@@ -6,5 +6,4 @@ metadata:
   namespace: keycloak
 spec:
   interval: 24h
-  url: oci://registry-1.docker.io/bitnamicharts/keycloak
-
+  url: https://charts.bitnami.com/bitnami

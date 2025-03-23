@@ -27,6 +27,5 @@ spec:
           - spec:
             containers:
               - image: "harbor.example.com/*"
-
-		#Replace harbor.example.com/* with your Container Repo
-    #Reference https://kyverno.io/policies/best-practices/restrict-image-registries/restrict-image-registries/
+                #Replace harbor.example.com/* with your Container Repo
+                ##Reference https://kyverno.io/policies/best-practices/restrict-image-registries/restrict-image-registries/

@@ -1,0 +1,20 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: hspc
+parameters:
+  serialNumber: "12345"
+  poolID: "1"
+  portID: CL1-A,CL2-A
+  connectionType: fc
+  csi.storage.k8s.io/fstype: ext4
+  csi.storage.k8s.io/node-publish-secret-name: "hspc-secret"
+  csi.storage.k8s.io/node-publish-secret-namespace: "hspc-operator-system"
+  csi.storage.k8s.io/provisioner-secret-name: "hspc-secret"
+  csi.storage.k8s.io/provisioner-secret-namespace: "hspc-operator-system"
+  csi.storage.k8s.io/controller-publish-secret-name: "hspc-secret"
+  csi.storage.k8s.io/controller-publish-secret-namespace: "hspc-operator-system"
+  csi.storage.k8s.io/node-stage-secret-name: "hspc-secret"
+  csi.storage.k8s.io/node-stage-secret-namespace: "hspc-operator-system"
+  csi.storage.k8s.io/controller-expand-secret-name: "hpsc-secret"
+  csi.storage.k8s.io/controller-expand-secret-namespace: "hspc-operator-system"

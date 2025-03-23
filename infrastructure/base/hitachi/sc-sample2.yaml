@@ -1,0 +1,28 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: sc-hspc
+  annotations:
+    kubernetes.io/description: Hitachi Storage Plug-in for Containers
+provisioner: hspc.csi.hitachi.com
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+allowVolumeExpansion: true
+parameters:
+  serialNumber: "715021"
+  poolID: "1"
+  portID: CL1-C,CL2-C,CL3-C,CL4-C
+  portIP: "192.168.0.108, 192.168.0.172, 192.169.0.109, 192.169.0.173"
+  connectionType: iscsi
+  csi.storage.k8s.io/fstype: ext4
+  csi.storage.k8s.io/node-publish-secret-name: "secret-hspc"
+  csi.storage.k8s.io/node-publish-secret-namespace: "hspc"
+  csi.storage.k8s.io/provisioner-secret-name: "secret-hspc"
+  csi.storage.k8s.io/provisioner-secret-namespace: "hspc"
+  csi.storage.k8s.io/controller-publish-secret-name: "secret-hspc"
+  csi.storage.k8s.io/controller-publish-secret-namespace: "hspc"
+  csi.storage.k8s.io/node-stage-secret-name: "secret-hspc"
+  csi.storage.k8s.io/node-stage-secret-namespace: "hspc"
+  csi.storage.k8s.io/controller-expand-secret-name: "secret-hspc"
+  csi.storage.k8s.io/controller-expand-secret-namespace: "hspc"
+

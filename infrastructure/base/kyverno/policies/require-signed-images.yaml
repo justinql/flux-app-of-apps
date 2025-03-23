@@ -22,10 +22,6 @@ spec:
         resources:
           kinds:
             - Pod
-      validate:
-        message: "All images must be signed."
-        anyPattern:
-          - spec:
       verifyImages:
       - imageReferences:
         - "harbor.example.com/*"

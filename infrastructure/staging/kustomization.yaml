@@ -6,6 +6,7 @@ resources:
   - ../base/velero
   - ../base/rbac
   - ../base/hitachi
+  - ../base/kyverno
 patches:
   - path: minio-tenant.yaml
     target:

@@ -84,7 +84,7 @@ data:
 ```
 
 ```
-kubectl create secret generic secret-hspc --from-literal "url=https://123.123.123.123" --from-literal "user=admin" --from-literal "password=password"
+ kubectl create secret generic hspc-secret -n hspc-operator-system --from-literal "url=https://123.123.123.123" --from-literal "user=admin" --from-literal "password=password" --dry-run=client -o yaml
 ```
 
 
@@ -136,6 +136,9 @@ kubectl create -f <storage-class-manifest-file>
 ```
 Use the following command to list the storage classes on GKE on Bare Metal clusters:
 ```
+kubectl get sc
+NAME                                PROVISIONER            RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
+hspc                                hspc.csi.hitachi.com   Delete          Immediate           true                   40s
 
 ```
 
@@ -150,7 +153,7 @@ Consider the following before applying the multipath configuration:
 Here is an example of how to enable multipath on a RHEL node using the mpathconf utility. The following command creates the /etc/multipath.conf file:
 ```
 mpathconf --enable --with_multipathd y
-``
+```
 The multipath.conf file will look like this:
 ```
 [root@ucpbm-gke-wnode2 ~]# cat /etc/multipath.conf

@@ -5,14 +5,9 @@ resources:
   - ../base/minio
   - ../base/velero
   - ../base/rbac
-  - ../base/hitachi
-  - ../base/kyverno
 patches:
   - path: minio-tenant.yaml
     target:
       kind: HelmRelease
   - path: ingress-nginx.yaml
   - path: velero.yaml
-  - path: hitachi-sc.yaml
-  - path: hitachi-secret.yaml
-  - path: kyverno-cosign-policy.yaml

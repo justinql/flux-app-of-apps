@@ -18,6 +18,25 @@ metadata:
   name: require-signed-images
 spec:
   validationFailureAction: Audit
+  rules:
+    - name: verify-image-signature
+      match:
+        resources:
+          kinds:
+            - Pod
+      verifyImages:
+      - imageReferences:
+        - "harbor.example.com/*"
+        mutateDigest: false
+        attestors:
+        - entries:
+          - keys:
+              publicKeys: |
+                -----BEGIN PUBLIC KEY-----
+                MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE8nXRh950IZbRj8Ra/N9sbqOPZrfM
+                5/KAQN0/KjHcorm/J5yctVd7iEcnessRQjU917hmKO6JWVGHpDguIyakZA==
+                -----END PUBLIC KEY-----
+
 ---
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
